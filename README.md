@@ -10,9 +10,9 @@ ShortCut to write Recursion
 
  3: sum up or min up or max up all the stuff 
 
-In order to cnt ways we hve to determines the base which returns 1 if we reach destination else return 0 ;
+In order to cnt ways we hve to determines the base condN which returns 1 if we reach destination else return 0 ;
 
 
 Space Optimization
 
-If there is the previous row and colunm in use then space can be optimized
+If there is the previous row and colunm is in use then space can be optimized
