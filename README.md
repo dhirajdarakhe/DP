@@ -4,9 +4,15 @@ Dynamic Programming
 
 ShortCut to write Recursion
 
- 1: try to represent the problem in term of index 
+ 1: try to represent the problm in term of index 
 
- 2: do all possible stuff on that indx acco to problem statemt
+ 2: do all possible stuff on that indx accodng to problem statemt
 
  3: sum up or min up or max up all the stuff 
 
+In order to cnt ways we hve to determines the base which returns 1 if we reach destination else return 0 ;
+
+
+Space Optimization
+
+If there is the previous row and colunm in use then space can be optimized
