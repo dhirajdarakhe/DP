@@ -1,3 +1,5 @@
+// https://leetcode.com/problems/triangle/description/
+
 #include <bits/stdc++.h>
 using namespace std;
 
