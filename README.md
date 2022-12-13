@@ -16,3 +16,6 @@ In order to cnt ways we hve to determines the base condN which returns 1 if we r
 Space Optimization
 
 If there is the previous row and colunm is in use then space can be optimized
+
+
+for infinite supply of resorces u must stand at same index in tke condition ;

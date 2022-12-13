@@ -75,21 +75,22 @@ int knapsack(vector<int> weight, vector<int> value, int n, int maxWeight)
             // OR
             // if remained_sized of box is zero then box will carry 0 val_item
             if (item == 0 || remained_size == 0)
-                dp[i][j] = 0;
+                dp[item][remained_size] = 0;
 
             // if the item we want to put in box whose size is more than box remained_size
             // then I'll we are not gonna put that item , we will just carry prior items
-            else if (weight[i - 1] > remained_size)
-                dp[i][j] = dp[i - 1][j];
+
+            else if (weight[item - 1] > remained_size)
+                dp[item][remained_size] = dp[item - 1][remained_size];
 
             // if the item we want to put in box whose size is enough to carry in  box of remained_size
             // then I'll we are gonna put max of ( that item +  we will add item in remained box as well ) and
             // prior items
             else
-                dp[i][j] = max(dp[i - 1][j], value[i - 1] + dp[maxWeight - weight[i - 1]]);
+                dp[item][remained_size] = max(dp[item - 1][remained_size], value[item - 1] + dp[item - 1][remained_size - weight[item - 1]]);
         }
     }
-    return dp[n - 1][maxWeight - 1];
+    return dp[n][maxWeight];
 }
 
 // TC - O ( N * TARGET );
@@ -107,15 +108,15 @@ int knapsack(vector<int> weight, vector<int> value, int n, int maxWeight)
         for (int remained_size = maxWeight; remained_size >= 0; --remained_size)
         {
             if (item == 0 || remained_size == 0)
-                dp[j] = 0;
-            int not_tke = dp[j];
+                dp[remained_size] = 0;
+            int not_tke = dp[remained_size];
             int tke = INT_MIN;
-            if (maxWeight >= w[i - 1])
-                tke = max(dj[j], value[i - 1] + dp[maxWeight - weight[i - 1]]);
-            dp[j] = max(tke, not_tke);
+            if (remained_size >= weight[item - 1])
+                tke = max(dp[remained_size], value[item - 1] + dp[remained_size - weight[item - 1]]);
+            dp[remained_size] = max(tke, not_tke);
         }
     }
-    return dp[maxWeight - 1];
+    return dp[maxWeight];
 }
 
 // TC - O ( N * TARGET );

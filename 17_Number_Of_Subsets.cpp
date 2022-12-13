@@ -48,6 +48,28 @@ int findWays(vector<int> &num, int tar)
     return dp[n][tar];
 }
 
-
 // tc = o(n*tar);
 // sc = o(n*tar);
+
+#include <bits/stdc++.h>
+int minSubsetSumDifference(vector<int> &arr, int n)
+{
+    // Write yo code here.
+    int sum = 0;
+    for (auto x : arr)
+        sum += x;
+    vector<vector<int>> dp(n + 1, vector<int> (sum + 1 , 0);
+    for(int i = 0 ; i < n; ++i) dp[i][0] = 1;
+    
+             for(int i = 1; i <= n; ++i)
+                               {
+        for (int j = 0; j <= sum; ++j)
+        {
+            int ntk = dp[i - 1][j];
+            int tk = 0;
+            if (j >= arr[i - 1])
+                tk = dp[i - 1][j] || dp[i - 1][j - arr[i - 1]];
+            dp[i][j] = (tk || ntk);
+        }
+                               }
+}
