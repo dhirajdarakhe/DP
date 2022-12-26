@@ -1,5 +1,9 @@
 // https://www.codingninjas.com/codestudio/problems/rod-cutting-problem_800284?leftPanelTab=0
 
+
+// memoization
+// tc = o(n*n);
+// sc = o(n)+o(n*n);
 int f(vector<int> &p, vector<vector<int>> &dp, int n, int i)
 {
     // bs
@@ -30,6 +34,11 @@ int cutRod(vector<int> &price, int n)
     return f(price, dp, n, n - 1);
 }
 
+
+
+// tabulation
+// tc = o(n*n);
+// sc = o(n*n);
 int cutRod(vector<int> &price, int n)
 {
     vector<vector<int>> dp(n + 1, vector<int>(n + 1, 0));
@@ -47,4 +56,28 @@ int cutRod(vector<int> &price, int n)
         }
     }
     return dp[n - 1][n];
+}
+
+
+
+// tabulation
+// tc = o(n*n);
+// sc = o(n);
+int cutRod(vector<int> &price, int n)
+{
+    vector<int> dp(n + 1, 0);
+    for (int i = 0; i <= n; ++i)
+        dp[i] = price[0] * (i);
+    for (int i = 1; i < n; ++i) // length of rods which can be used for making rad of length N
+    {
+        for (int N = 0; N <= n; ++N) // length of lod to be made
+        {
+            int ntk = dp[N];
+            int tk = INT_MIN;
+            if (N >= i + 1)
+                tk = price[i] + dp[N - (i + 1)];
+            dp[N] = max(tk, ntk);
+        }
+    }
+    return dp[n];
 }
