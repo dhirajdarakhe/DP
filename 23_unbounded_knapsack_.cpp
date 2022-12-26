@@ -38,7 +38,6 @@ int unboundedKnapsack(int n, int w, vector<int> &profit, vector<int> &weight)
 int unboundedKnapsack(int n, int w, vector<int> &profit, vector<int> &weight)
 {  
     vector<vector<int>> dp(n+1, vector<int>(w+1, 0));
-//     return f(profit, weight, dp, w, n - 1);
     
     // bs condN
     for(int i = 0; i <= w; ++i) dp[0][i] = (i >= weight[0]) ? (profit[0] * (i / weight[0])) : 0;
