@@ -19,3 +19,9 @@ If there is the previous row and colunm is in use then space can be optimized
 
 
 for infinite supply of resorces u must stand at same index in tke condition ;
+
+
+DP On string
+1. Comparision
+2. Replace
+3. Edit
