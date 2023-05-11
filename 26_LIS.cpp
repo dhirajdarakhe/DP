@@ -30,3 +30,33 @@ public:
         return ans;
     }
 };
+
+                            
+                             int f(vector<int> &nums, int i, int pre,vector<vector<int>> &dp)
+    {
+        if(i >= nums.size()) return 0;
+        if(dp[i][pre+1] != -1) return dp[i][pre+1];
+        int ntk = f(nums, i+1, pre, dp);
+        int tk = INT_MIN;
+        if(pre == -1 || nums[i] > nums[pre])
+        {
+            tk = 1 + f(nums, i + 1, i, dp);
+        }
+        return dp[i][pre+1] = max(tk, ntk);
+    }
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
